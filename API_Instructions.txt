@@ -1,0 +1,52 @@
+Web API
+
+1)Create a asp.net api project.
+2)Load the DAL files in the solution.
+3)Right click on the dependency and add reference to the DAL.
+4)Open the appsettings.json and modify the connection settings to "Copy always".
+5)Create a model class file in the Web API.
+6)Right click on Dependency and Manage NuGet Packages and install AutoMapper.
+7)Secondly install Extensions.Configuration.
+8)Open the Startup.cs and in the namespace give the necessary library needed like AutoMapper etc.
+9)In the Startup.cs modify the Configuration.Services connection settings and refer to your newly created Mapper class.
+10)In the controllers,create a api controller class with read and write operations.
+11)Enter the necessary libraries in the namespace required for mapping and modify the code likewise in public class for get function.
+12)Now go to Properties->launchsettings.json and place the code "launchUrl": "api/Product" inside profiles.
+13)Now right click on solution and go to properties and change the startup project to the API you have created.
+14)Run the code.
+
+
+MVC - For linking API and MVC App
+
+1)Create a ServiceRepository.cs file in the MVC App.
+
+2)For allowing startup of both MVC and API, take the http localhost url from launchsettings.json in the API and paste it in the appsettings.json 
+	in MVC as "ServiceUrl": "http://localhost:56883"
+
+3)Create a Client Controller with read/write operations in the MVC for retrieving the data from the API service layer. Add these libraries in the namespace:
+using System.Net.Http;
+using Microsoft.Extensions.Configuration;
+using QuickKartMVCCoreWebApp.Repo;
+
+4)Create a index view for the client controller.
+
+5)Change the startup.cs in MVc
+routes.MapRoute(
+                    name: "default",
+                    template: "{controller=ProductClient}/{action=Index}/{id?}");
+
+
+MVC
+
+1)Do the above connection configurations.
+2)Create a controller class.
+3)Add actions in it and create views corressponding to the actions. Make changes in the views for connections. 
+	Add a viewbag if necessary.
+
+4)For showing a list, do modificatons in the HomeController and create a view in the shared folder for the same and make a partial view for it in the login page.
+
+5)For a login page:
+	1)Change the input settings in the login view created.
+	2)Make a controller page and add a view for the same.
+	3)Add in the namespace of home controller : using Microsoft.AspNetCore.Http;
+	4)Add action in the home controller for the same.
